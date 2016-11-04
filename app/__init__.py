@@ -7,6 +7,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.config.from_object('config')
 
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('errors/404.html'), 404
@@ -18,9 +19,9 @@ def internal_server_error(error):
 
 
 # Import modules using blueprint handlers
-from app.index_page.controllers import index as index_module
+from app.index_page.controllers import index as ctl_index
+from app.api.controllers import api as ctl_api
 
 # Register blueprints
-app.register_blueprint(index_module)
-
-
+app.register_blueprint(ctl_index)
+app.register_blueprint(ctl_api)

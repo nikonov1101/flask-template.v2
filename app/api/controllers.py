@@ -12,7 +12,6 @@ api = Blueprint('api', __name__, url_prefix='/api')
 
 @api.route('/', methods=['GET'])
 def hello():
-    """ just render index page template """
     return jsonify({'data': 'hello, world!'})
 
 
